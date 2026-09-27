@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TZK Trendora BD — Luxury Fashion</title>
+
+<meta name="description" content="TZK Trendora BD — Premium fashion designed for modern individuals.">
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --black:#050505;
+    --deep:#0b0b0b;
+    --gold:#d8b86a;
+    --gold-light:#f2d994;
+    --cream:#f6f0e3;
+    --gray:#9b9b9b;
+    --border:rgba(216,184,106,.22);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:#fff;
+    font-family:'Montserrat',sans-serif;
+    overflow-x:hidden;
+}
+
+/* ---------- LOADING ---------- */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:#050505;
+    z-index:99999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    animation:loaderHide 1.8s forwards;
+}
+
+.loader-logo{
+    font-family:'Cormorant Garamond',serif;
+    color:var(--gold-light);
+    font-size:40px;
+    letter-spacing:8px;
+    animation:pulse 1s infinite alternate;
+}
+
+@keyframes pulse{
+    from{opacity:.35;}
+    to{opacity:1;}
+}
+
+@keyframes loaderHide{
+    0%,75%{opacity:1;visibility:visible;}
+    100%{opacity:0;visibility:hidden;}
+}
+
+/* ---------- BACKGROUND ---------- */
+
+body:before{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:rgba(216,184,106,.06);
+    filter:blur(130px);
+    border-radius:50%;
+    top:-250px;
+    left:-200px;
+    pointer-events:none;
+}
+
+body:after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(255,255,255,.025);
+    filter:blur(130px);
+    border-radius:50%;
+    bottom:-250px;
+    right:-150px;
+    pointer-events:none;
+}
+
+/* ---------- NAVBAR ---------- */
+
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    padding:22px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,5,5,.72);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.logo{
+    text-decoration:none;
+    color:white;
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+    font-weight:600;
+    letter-spacing:4px;
+}
+
+.logo span{
+    color:var(--gold);
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--gold-light);
+}
+
+.nav-btn{
+    padding:11px 19px;
+    border:1px solid var(--gold);
+    color:var(--gold-light)!important;
+}
+
+.menu{
+    display:none;
+    font-size:25px;
+    color:var(--gold);
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    padding:120px 7% 70px;
+}
+
+.hero-glow{
+    position:absolute;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    border:1px solid rgba(216,184,106,.09);
+    box-shadow:
+        0 0 120px rgba(216,184,106,.07),
+        inset 0 0 120px rgba(216,184,106,.04);
+    animation:rotate 25s linear infinite;
+}
+
+.hero-glow:before{
+    content:"";
+    position:absolute;
+    inset:70px;
+    border:1px solid rgba(216,184,106,.08);
+    border-radius:50%;
+}
+
+@keyframes rotate{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:1000px;
+}
+
+.eyebrow{
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:6px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(65px,12vw,155px);
+    line-height:.82;
+    font-weight:500;
+    letter-spacing:-3px;
+}
+
+.hero h1 span{
+    display:block;
+    color:var(--gold-light);
+    font-style:italic;
+}
+
+.hero-sub{
+    margin:35px auto;
+    color:#a8a8a8;
+    max-width:570px;
+    font-size:14px;
+    line-height:2;
+    letter-spacing:1px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:180px;
+    padding:15px 27px;
+    text-decoration:none;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    transition:.35s;
+}
+
+.btn-gold{
+    background:linear-gradient(135deg,#b99643,#f1d78e,#b99643);
+    color:#050505;
+    font-weight:700;
+}
+
+.btn-gold:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(216,184,106,.25);
+}
+
+.btn-outline{
+    border:1px solid rgba(216,184,106,.5);
+    color:white;
+}
+
+.btn-outline:hover{
+    background:rgba(216,184,106,.1);
+    border-color:var(--gold);
+}
+
+.scroll{
+    position:absolute;
+    bottom:30px;
+    color:#777;
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+/* ---------- MARQUEE ---------- */
+
+.marquee{
+    overflow:hidden;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:17px 0;
+    background:#080808;
+}
+
+.marquee-track{
+    display:flex;
+    width:max-content;
+    animation:marquee 25s linear infinite;
+}
+
+.marquee span{
+    font-family:'Cormorant Garamond',serif;
+    font-size:21px;
+    letter-spacing:4px;
+    color:#aaa;
+    margin-right:60px;
+}
+
+.marquee b{
+    color:var(--gold);
+}
+
+@keyframes marquee{
+    to{transform:translateX(-50%);}
+}
+
+/* ---------- COMMON ---------- */
+
+.section{
+    padding:120px 7%;
+}
+
+.section-head{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 65px;
+}
+
+.section-label{
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:5px;
+    margin-bottom:18px;
+}
+
+.section-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(45px,6vw,75px);
+    font-weight:500;
+    line-height:1;
+}
+
+.section-text{
+    color:#888;
+    margin-top:20px;
+    line-height:1.9;
+    font-size:13px;
+}
+
+/* ---------- PRODUCTS ---------- */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    max-width:1250px;
+    margin:auto;
+}
+
+.product{
+    position:relative;
+    background:linear-gradient(145deg,#151515,#080808);
+    border:1px solid rgba(255,255,255,.08);
+    overflow:hidden;
+    transition:.5s;
+}
+
+.product:hover{
+    transform:translateY(-12px);
+    border-color:rgba(216,184,106,.5);
+    box-shadow:0 25px 60px rgba(0,0,0,.6);
+}
+
+.product-image{
+    position:relative;
+    overflow:hidden;
+    background:#111;
+}
+
+.product-image img{
+    width:100%;
+    height:480px;
+    object-fit:cover;
+    display:block;
+    transition:1s;
+}
+
+.product:hover img{
+    transform:scale(1.06);
+}
+
+.badge{
+    position:absolute;
+    top:18px;
+    left:18px;
+    z-index:2;
+    background:rgba(5,5,5,.85);
+    border:1px solid var(--gold);
+    color:var(--gold-light);
+    padding:8px 12px;
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+.product-info{
+    padding:25px;
+}
+
+.product-category{
+    color:#777;
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.product h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:29px;
+    font-weight:500;
+    margin:8px 0;
+}
+
+.price{
+    color:var(--gold-light);
+    font-size:20px;
+    font-weight:600;
+}
+
+.old-price{
+    color:#666;
+    text-decoration:line-through;
+    font-size:12px;
+    margin-left:8px;
+}
+
+.details{
+    color:#777;
+    font-size:11px;
+    line-height:2;
+    margin:15px 0 20px;
+}
+
+.order-btn{
+    width:100%;
+}
+
+/* ---------- CEO ---------- */
+
+.ceo{
+    padding:110px 7%;
+    text-align:center;
+    background:
+        linear-gradient(rgba(5,5,5,.8),rgba(5,5,5,.95)),
+        radial-gradient(circle at center,rgba(216,184,106,.09),transparent 55%);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+}
+
+.ceo-mark{
+    font-family:'Cormorant Garamond',serif;
+    color:var(--gold);
+    font-size:70px;
+    line-height:.5;
+}
+
+.ceo small{
+    display:block;
+    margin:35px 0 12px;
+    color:#777;
+    letter-spacing:5px;
+    font-size:9px;
+}
+
+.ceo h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:45px;
+    font-weight:500;
+    color:var(--cream);
+}
+
+.ceo p{
+    color:#777;
+    font-size:12px;
+    margin-top:10px;
+    letter-spacing:2px;
+}
+
+/* ---------- FEATURES ---------- */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    max-width:1200px;
+    margin:auto;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.feature{
+    padding:40px 25px;
+    text-align:center;
+    border-right:1px solid rgba(255,255,255,.07);
+}
+
+.feature:last-child{
+    border-right:0;
+}
+
+.feature-number{
+    color:var(--gold);
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+}
+
+.feature h3{
+    font-size:12px;
+    letter-spacing:2px;
+    margin:12px 0;
+}
+
+.feature p{
+    color:#777;
+    font-size:10px;
+    line-height:1.8;
+}
+
+/* ---------- ABOUT ---------- */
+
+.about-box{
+    max-width:1000px;
+    margin:auto;
+    padding:60px;
+    border:1px solid rgba(216,184,106,.18);
+    background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.01));
+    backdrop-filter:blur(15px);
+    text-align:center;
+}
+
+.about-box p{
+    color:#999;
+    line-height:2;
+    font-size:14px;
+}
+
+/* ---------- CONTACT ---------- */
+
+.contact{
+    text-align:center;
+    background:
+        radial-gradient(circle at center,rgba(216,184,106,.08),transparent 50%);
+}
+
+.contact-card{
+    max-width:800px;
+    margin:auto;
+    padding:70px 30px;
+    border:1px solid rgba(216,184,106,.2);
+    background:rgba(255,255,255,.02);
+}
+
+.contact-card h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:60px;
+    font-weight:500;
+}
+
+.contact-card p{
+    color:#888;
+    margin:15px auto 30px;
+    font-size:13px;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+    padding:45px 7%;
+    border-top:1px solid rgba(255,255,255,.07);
+    text-align:center;
+    background:#030303;
+}
+
+.footer-logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+    letter-spacing:4px;
+    color:var(--gold-light);
+}
+
+footer p{
+    color:#555;
+    font-size:10px;
+    letter-spacing:1px;
+    margin-top:12px;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .products{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .features{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .feature:nth-child(2){
+        border-right:0;
+    }
+
+    .feature:nth-child(-n+2){
+        border-bottom:1px solid rgba(255,255,255,.07);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:18px 5%;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .hero{
+        min-height:95vh;
+    }
+
+    .hero h1{
+        font-size:70px;
+        letter-spacing:-2px;
+    }
+
+    .hero-glow{
+        width:420px;
+        height:420px;
+    }
+
+    .section{
+        padding:85px 5%;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .product-image img{
+        height:470px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .feature,
+    .feature:nth-child(2){
+        border-right:0;
+        border-bottom:1px solid rgba(255,255,255,.07);
+    }
+
+    .feature:last-child{
+        border-bottom:0;
+    }
+
+    .about-box{
+        padding:35px 22px;
+    }
+
+    .ceo h2{
+        font-size:35px;
+    }
+
+    .contact-card h2{
+        font-size:45px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div class="loader">
+    <div class="loader-logo">TZK</div>
+</div>
+
+
+<!-- NAVIGATION -->
+<header class="navbar">
+
+    <a href="#home" class="logo">
+        TZK <span>TRENDORA</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+            <a href="#collection" class="nav-btn">Shop Now</a>
+        </li>
+    </ul>
+
+    <div class="menu">☰</div>
+
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-glow"></div>
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            PREMIUM FASHION HOUSE
+        </div>
+
+        <h1>
+            WEAR
+            <span>YOUR LEGACY.</span>
+        </h1>
+
+        <p class="hero-sub">
+            Refined silhouettes. Premium materials.
+            Effortless confidence. Discover the new
+            standard of everyday fashion with TZK Trendora BD.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#collection" class="btn btn-gold">
+                Explore Collection
+            </a>
+
+            <a href="#about" class="btn btn-outline">
+                Discover TZK
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="scroll">
+        SCROLL TO DISCOVER
+    </div>
+
+</section>
+
+
+<!-- MARQUEE -->
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>TZK <b>✦</b> PREMIUM FASHION</span>
+        <span>CRAFTED FOR <b>✦</b> CONFIDENCE</span>
+        <span>TIMELESS <b>✦</b> STYLE</span>
+        <span>TZK <b>✦</b> PREMIUM FASHION</span>
+        <span>CRAFTED FOR <b>✦</b> CONFIDENCE</span>
+        <span>TIMELESS <b>✦</b> STYLE</span>
+
+    </div>
+
+</div>
+
+
+<!-- COLLECTION -->
+<section class="section" id="collection">
+
+    <div class="section-head">
+
+        <div class="section-label">
+            THE COLLECTION
+        </div>
+
+        <h2 class="section-title">
+            Signature Pieces
+        </h2>
+
+        <p class="section-text">
+            Carefully selected essentials designed to
+            elevate your everyday wardrobe.
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <!-- PRODUCT 1 -->
+        <article class="product">
+
+            <div class="product-image">
+
+                <div class="badge">
+                    SIGNATURE
+                </div>
+
+                <img
+                    src="1785691290_L_5.jpeg"
+                    alt="Purple Acid Wash T-Shirt"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    TZK ESSENTIALS
+                </div>
+
+                <h3>
+                    Purple Acid Wash
+                </h3>
+
+                <div>
+                    <span class="price">৳670</span>
+                    <span class="old-price">৳750</span>
+                </div>
+
+                <p class="details">
+                    100% Cotton Acid Wash<br>
+                    220+ GSM • Drop Shoulder<br>
+                    Available: M • L • XL
+                </p>
+
+                <a
+                    class="btn btn-gold order-btn"
+                    target="_blank"
+                    href="https://wa.me/8801406825732?text=Hello%20TZK%20Trendora%20BD%2C%20I%20want%20to%20order%20Purple%20Acid%20Wash%20T-Shirt."
+                >
+                    Order on WhatsApp
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+        <article class="product">
+
+            <div class="product-image">
+
+                <div class="badge">
+                    NEW ARRIVAL
+                </div>
+
+                <img
+                    src="1785691290_L_3.jpeg"
+                    alt="Beige Acid Wash T-Shirt"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    TZK ESSENTIALS
+                </div>
+
+                <h3>
+                    Beige Acid Wash
+                </h3>
+
+                <div>
+                    <span class="price">৳670</span>
+                    <span class="old-price">৳750</span>
+                </div>
+
+                <p class="details">
+                    100% Cotton Acid Wash<br>
+                    220+ GSM • Drop Shoulder<br>
+                    Available: M • L • XL
+                </p>
+
+                <a
+                    class="btn btn-gold order-btn"
+                    target="_blank"
+                    href="https://wa.me/8801406825732?text=Hello%20TZK%20Trendora%20BD%2C%20I%20want%20to%20order%20Beige%20Acid%20Wash%20T-Shirt."
+                >
+                    Order on WhatsApp
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+        <article class="product">
+
+            <div class="product-image">
+
+                <div class="badge">
+                    BEST SELLER
+                </div>
+
+                <img
+                    src="1785691290_L_1.jpeg"
+                    alt="Black Acid Wash T-Shirt"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    TZK ESSENTIALS
+                </div>
+
+                <h3>
+                    Black Acid Wash
+                </h3>
+
+                <div>
+                    <span class="price">৳670</span>
+                    <span class="old-price">৳750</span>
+                </div>
+
+                <p class="details">
+                    100% Cotton Acid Wash<br>
+                    220+ GSM • Drop Shoulder<br>
+                    Available: M • L • XL
+                </p>
+
+                <a
+                    class="btn btn-gold order-btn"
+                    target="_blank"
+                    href="https://wa.me/8801406825732?text=Hello%20TZK%20Trendora%20BD%2C%20I%20want%20to%20order%20Black%20Acid%20Wash%20T-Shirt."
+                >
+                    Order on WhatsApp
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- BRAND STATEMENT -->
+<section class="ceo">
+
+    <div class="ceo-mark">
+        “
+    </div>
+
+    <small>
+        FOUNDER & CEO
+    </small>
+
+    <h2>
+        MD. TAHMID ZARIF KHAN
+    </h2>
+
+    <p>
+        Building TZK Trendora BD with style, quality & trust.
+    </p>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="section">
+
+    <div class="section-head">
+
+        <div class="section-label">
+            THE TZK STANDARD
+        </div>
+
+        <h2 class="section-title">
+            Made To Stand Out
+        </h2>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-number">
+                01
+            </div>
+
+            <h3>
+                PREMIUM QUALITY
+            </h3>
+
+            <p>
+                Quality-focused materials and
+                carefully selected products.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                02
+            </div>
+
+            <h3>
+                MODERN DESIGN
+            </h3>
+
+            <p>
+                Clean, contemporary pieces
+                made for modern lifestyles.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                03
+            </div>
+
+            <h3>
+                FAIR VALUE
+            </h3>
+
+            <p>
+                Premium-looking fashion at
+                an accessible price.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                04
+            </div>
+
+            <h3>
+                CUSTOMER FIRST
+            </h3>
+
+            <p>
+                Your trust and satisfaction
+                remain at the heart of TZK.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="section" id="about">
+
+    <div class="section-head">
+
+        <div class="section-label">
+            OUR STORY
+        </div>
+
+        <h2 class="section-title">
+            Beyond Fashion
+        </h2>
+
+    </div>
+
+
+    <div class="about-box">
+
+        <p>
+            TZK Trendora BD is a modern fashion brand
+            created for people who believe that personal
+            style is a statement. We focus on premium-looking
+            essentials, contemporary design and a refined
+            shopping experience.
+            <br><br>
+            Our philosophy is simple:
+            <strong style="color:#d8b86a;">
+                Wear confidence. Wear your identity.
+            </strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+
+    <div class="contact-card">
+
+        <div class="section-label">
+            LET'S CONNECT
+        </div>
+
+        <h2>
+            Ready To Elevate
+            Your Style?
+        </h2>
+
+        <p>
+            For orders and product information,
+            connect with TZK Trendora BD directly.
+        </p>
+
+        <a
+            href="https://wa.me/8801406825732?text=Hello%20TZK%20Trendora%20BD"
+            target="_blank"
+            class="btn btn-gold"
+        >
+            Chat on WhatsApp
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-logo">
+        TZK TRENDORA BD
+    </div>
+
+    <p>
+        PREMIUM FASHION • MODERN IDENTITY • TIMELESS STYLE
+    </p>
+
+    <p>
+        © 2026 TZK Trendora BD. All Rights Reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>
